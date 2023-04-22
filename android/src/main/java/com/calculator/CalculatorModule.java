@@ -4,16 +4,13 @@ import androidx.annotation.NonNull;
 
 import com.facebook.react.bridge.Promise;
 import com.facebook.react.bridge.ReactApplicationContext;
-import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.facebook.react.module.annotations.ReactModule;
 
-@ReactModule(name = CalculatorModule.NAME)
-public class CalculatorModule extends ReactContextBaseJavaModule {
+public class CalculatorModule extends CalculatorSpec {
   public static final String NAME = "Calculator";
 
-  public CalculatorModule(ReactApplicationContext reactContext) {
-    super(reactContext);
+  CalculatorModule(ReactApplicationContext context) {
+    super(context);
   }
 
   @Override

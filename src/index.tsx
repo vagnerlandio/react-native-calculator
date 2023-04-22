@@ -6,8 +6,15 @@ const LINKING_ERROR =
   '- You rebuilt the app after installing the package\n' +
   '- You are not using Expo Go\n';
 
-const Calculator = NativeModules.Calculator
-  ? NativeModules.Calculator
+// @ts-expect-error
+const isTurboModuleEnabled = global.__turboModuleProxy != null;
+
+const CalculatorModule = isTurboModuleEnabled
+  ? require('./NativeCalculator').default
+  : NativeModules.Calculator;
+
+const Calculator = CalculatorModule
+  ? CalculatorModule
   : new Proxy(
       {},
       {
